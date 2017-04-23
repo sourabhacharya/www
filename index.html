@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!--INFSCIS-1073/TELCOM-2727: Mobile Application Development
+        Date: 04/23/2017
+        Pharmacy Project: GetWellApp; 
+        Authors: Sourabh Acharya (SOA25@pitt.edu), Arun Kumar Rajendra Kumar(ARR127@pitt.edu);
+    -->
+    <xml version='1.0' encoding='utf-8'>
+    <title>Get Well</title>
+               
+<manifest android:hardwareAccelerated="true" android:versionCode="1" android:versionName="1.0.0" android:windowSoftInputMode="adjustPan" package="dig.phonegap.loa_app" xmlns:android="http://schemas.android.com/apk/res/android">
+<supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true" android:xlargeScreens="true" />
+    
+<uses-permission android:name="android.permission.INTERNET" />
+    
+        <!--script src="js/jquery-3.2.0.min.js"></script>-->
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.4.5.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.icons-1.4.5.css" />
+		<link rel="stylesheet" type="text/css" href="css/pharm.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    
+        <script>
+        $("#hello").ready(function(){
+            $("#report").on("click",function(){
+              console.log("Report sent");      
+              alert("Report has been sent");
+                  
+          });  
+
+					$.get("get.json", function(data){
+                        
+					$("#hey").html("Patient ID:" + "&nbsp;" + data.id + "<br/>" + "Firstname:" + "&nbsp;"+ data.firstname + "<br/>" + "Lastname:" + "&nbsp;"+ data.lastname + "<br/>" + "Gender:" + "&nbsp;"+ data.gender + "<br/>" + "Date of Birth:" + "&nbsp;"+ data.dob);
+						console.log(data);
+					});
+     
+            var dat = {}
+           $.post("index.html", JSON.stringify(dat), function(response){
+}); 
+});      
+        </script>
+    
+    <script>
+    $("#medi").ready(function(){
+        $.get("get.json", function(red){
+            console.log(red);
+              $("#mad").html("Number of Medications to be taken:" + "&nbsp;" + red.drug.medications + "<br/>" + "<p> Medication 1 Details: </p>" + "Physician:" + "&nbsp;" + red.drug.medication1.physician + "<br/>" + "Pharmacy:" + "&nbsp;" + red.drug.medication1.pharmacy + "<br/>" + "Location:" + "&nbsp;" + red.drug.medication1.location + "<br/>" + "Brand name:" + "&nbsp;" + red.drug.medication1.brandname + "<br/>" + "Generic name:" + "&nbsp;" + red.drug.medication1.genericname + "<br/>" + "Dose:" + "&nbsp;" + red.drug.medication1.dose + "<br/>" +"Date" + "<br/>" + "Filled date:" + "&nbsp;" + red.drug.medication1.date.filleddate + "<br/>" + "Pick up date:" + "&nbsp;" + red.drug.medication1.date.pickupdate + "<br/>" + "Prescribed date:" + "&nbsp;" + red.drug.medication1.date.prescribeddate + "<br/>" + "Schedule"  + "<br/>" + "Number of units taken:" + "&nbsp;" + red.drug.medication1.schedule.numberofunits + "<br/>" + "Time taken:" + "&nbsp;" + red.drug.medication1.schedule.taken + "<br/>" + "Units dispensed:" + "&nbsp;" + red.drug.medication1.unitsdispensed + "<br/>" + "Time taken:" + "&nbsp;" + red.drug.medication1.schedule.taken + "<br/>" + "Refills:" + "&nbsp;" + red.drug.medication1.refills + "<br/>" );
+              });
+    });
+    </script>
+    
+    <script>
+    $("#medir").ready(function(){
+        $.get("get.json", function(ref){
+            console.log(ref);
+              $("#made").html("Number of Medications to be taken:" + "&nbsp;" + ref.drug.medications + "<br/>" + "<p> Medication 2 Details: </p>" + "Physician:" + "&nbsp;" + ref.drug.medication1.physician + "<br/>" + "Pharmacy:" + "&nbsp;" + ref.drug.medication1.pharmacy + "<br/>" + "Location:" + "&nbsp;" + ref.drug.medication1.location + "<br/>" + "Brand name:" + "&nbsp;" + ref.drug.medication1.brandname + "<br/>" + "Generic name:" + "&nbsp;" + ref.drug.medication1.genericname + "<br/>" + "Dose:" + "&nbsp;" + ref.drug.medication1.dose + "<br/>" +"Date" + "<br/>" + "Filled date:" + "&nbsp;" + ref.drug.medication1.date.filleddate + "<br/>" + "Pick up date:" + "&nbsp;" + ref.drug.medication1.date.pickupdate + "<br/>" + "Prescribed date:" + "&nbsp;" + ref.drug.medication1.date.prescribeddate + "<br/>" + "Schedule"  + "<br/>" + "Number of units taken:" + "&nbsp;" + ref.drug.medication1.schedule.numberofunits + "<br/>" + "Time taken:" + "&nbsp;" + ref.drug.medication1.schedule.taken + "<br/>" + "Units dispensed:" + "&nbsp;" + ref.drug.medication1.unitsdispensed + "<br/>" + "Time taken:" + "&nbsp;" + ref.drug.medication1.schedule.taken + "<br/>" + "Refills:" + "&nbsp;" + ref.drug.medication1.refills + "<br/>" );
+              });
+    });
+    </script>
+    
+    <script>
+    function displaySurvey(){
+        $.get("getr.json", function(surveyform){
+           console.log(surveyform.questions); 
+            for (var key in surveyform.questions) {
+                  if (surveyform.questions.hasOwnProperty(key)) {
+                    // console.log(key + " -> " + surveyform.questions[key]);
+                      $div = $("<div></div>");
+                      $p = $("<p></p>");
+                      $p.html(surveyform.questions[key]);
+                      
+                      $div.append($p);
+                      $txt = $("<input />");
+                      $txt.attr({
+                         "type":"text",
+                          "id": key
+                      });
+                      $div.append($txt);
+                      $("#blue").append($div);
+                  }
+            }
+        });
+    }
+        
+    function submitSurvey(){
+            var myData = {
+                "q1" : $("#q1").val(),
+                "q2" : $("#q2").val(),
+                "q3" : $("#q3").val(),
+                "q4" : $("#q4").val(),
+                "q5" : $("#q5").val(),
+                "q6" : $("#q6").val(),
+                "q7" : $("#q7").val(),
+                "q8" : $("#q8").val(),
+                "q9" : $("#q9").val(),
+                "q10" : $("#q10").val(),
+                "q11" : $("#q11").val()
+            }
+            console.log(myData);
+            $.post("index.html", JSON.stringify(myData), function(response){    });
+    }
+ 
+    </script>
+    
+</head>
+
+<body>  
+        <section id="intro" data-role="page">
+            <div id = hello> </div>
+            <div data-role="header">
+                <h1> getWELL</h1>
+            </div>
+            &nbsp;
+            <div id= hey> </div>
+            
+            <div class="ui-content" role ="main">
+
+						<ul>
+							<li><a href="#Medication1">Medication 1</a></li>
+							<li><a href="#Medication2">Medication 2</a></li>
+							
+						</ul>
+                <input type="button" id="report" value="Send Report" />
+                   
+                <iframe src="https://calendar.google.com/calendar/embed?src=rsjla9i7l4g9bqepej7shm0rog%40group.calendar.google.com&ctz=America/New_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                                
+					</div>
+
+		</section>
+        <section id="Medication1" data-role="page">
+            <div id = "medi"> </div>
+			<div data-role="header">
+                <h1> Details </h1>
+            </div>
+            <div id="mad">
+            
+            </div>
+            <div class ="ui-content" role ="main">
+                <ul>
+                    <li>
+            <a href = "#intro"> Home page</a>
+                    </li>
+                    <li>
+                    <a href = "#Medication2"> Medication 2</a>
+                    </li>
+                    <li>
+                    <a href = "#survey" onclick="displaySurvey();"> Survey </a>
+                    </li>
+                </ul>
+                    </div>
+                
+             
+		</section>
+        
+        <section id="Medication2" data-role="page">
+            <div id = "medir"> </div>
+			<div data-role="header">
+                <h1> Details </h1>
+            </div>
+            <div id="made">
+            
+            </div>
+            <div class ="ui-content" role ="main">
+                <ul>
+                    <li>
+            <a href = "#intro"> Home page</a>
+                    </li>
+                    <li>
+                    <a href = "#Medication1"> Medication 1</a>
+                    </li>
+                    <li>
+                        <a href = "#survey"> Take the Survey </a>
+                    </li>
+                </ul>
+                    </div>
+             </section>
+        
+        <section id = "survey" data-role="page">
+        <div id = "medic">
+            </div>
+            <div data-role="header">
+            <h1> Survey </h1></div>
+            <div id = "blue"> </div>
+            <div class ="ui-content" role ="main">
+             <input type="button" id="btnSubmit" value="Submit" onclick="submitSurvey();" />
+                <ul>
+                <li>
+                    <a href = "#intro"> Home page </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
+
+</html>
